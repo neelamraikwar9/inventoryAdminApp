@@ -6,7 +6,7 @@ const InventoryForm = () => {
     const dispatch = useDispatch();
     const [itemName, setItemName] = useState("");
     const [quantity, setQuantity] = useState("");
-    const [entryType, setEntryType] = useState("");
+    const [entryType, setEntryType] = useState("add to storage");
 
     const handleAddItem = (e) => {
         e.preventDefault();
@@ -16,14 +16,20 @@ const InventoryForm = () => {
         console.log(entryType, "entryType", itemName, quantity, "entry");
 
         // if(entryType === "add to storage"){
-            dispatch(addInventory({itemName, quantity: parseFloat(quantity), entryType}))
+            dispatch(addInventory({itemName: itemName, quantity: parseFloat(quantity), entryType: entryType}));
+            // dispatch(addInventory({"Item Name": itemName, "Quantity": parseFloat(quantity), "Entry Type": entryType}));
+
+            // dispatch(addInventory({"Item Name": itemName, "Quantity": quantity.toString(), "Entry Type": entryType}));
+
+            
         // } else{
         //     dispatch()
         // }
 
-        setItemName("");
-        setQuantity("");
-        setEntryType("add to storage");
+        // setItemName("");
+        // setQuantity("");
+        let initialEntry = "add to storage"
+        setEntryType(initialEntry);
     }
 
   return (
